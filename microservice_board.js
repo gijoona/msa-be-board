@@ -9,7 +9,7 @@ const cluster = require('cluster'); // cluster 모듈
   MicroService Architecture : Board
   developer - ijgong
   date - 20180912
-  target git - msa_be_board:develop
+  target git - msa_be_board:develop 
 */
 class board extends require('./server.js') {
   constructor () {
