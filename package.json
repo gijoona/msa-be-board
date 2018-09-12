@@ -1,0 +1,17 @@
+{
+  "name": "board",
+  "version": "1.0.0",
+  "description": "MicroService Architecture Goods",
+  "main": "microservice_goods.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "devilkij77@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "elasticsearch": "^15.1.1",
+    "logat": "^1.0.11",
+    "mysql": "^2.16.0",
+    "redis": "^2.8.0"
+  }
+}
