@@ -1,27 +1,28 @@
 'use strict';
 
-const serverIp = '35.200.103.250';
 const business = require('./modules/monolithic_board.js');
 const cluster = require('cluster'); // cluster 모듈
+const conf = require('./conf/config').setting;
+// const serverIp = '35.200.103.250';
 
 /**
   Board 클래스
   MicroService Architecture : Board
   developer - ijgong
   date - 20180912
-  target git - msa_be_board:develop 
+  target git - msa_be_board:develop
 */
 class board extends require('./server.js') {
   constructor () {
 
     // 초기화
     super('board',
-      process.argv[2] ? Number(process.argv[2]) : 9050,
+      process.argv[2] ? Number(process.argv[2]) : conf.service.port,
       ['POST/board', 'GET/board', 'PUT/board', 'DELETE/board']
     );
 
     // Distributor 접속
-    this.connectToDistributor(serverIp, 9000, (data) => {
+    this.connectToDistributor(conf.distribute.ip, conf.distribute.port, (data) => {
       console.log("Distributor Notification", data);
     });
   }

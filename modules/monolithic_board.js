@@ -1,14 +1,15 @@
-const serverIp = '35.200.103.250';
+const conf = require('../conf/config').setting;
+// const serverIp = '35.200.103.250';
 const mysql = require('mysql');
 const conn = {
-  host: serverIp,
+  host: conf.database.ip,
   user: 'root',
   // password: 'ngl1213',
   database: 'monolithic',
   multipleStatements: true  // 상품 등록 후 아이디를 알아오려고 설정
 }
 
-const redis = require('redis').createClient(6379, serverIp);  // redis 모듈 로드
+const redis = require('redis').createClient(conf.redis.port, conf.redis.ip);  // redis 모듈 로드
 redis.on('error', function (err) {  // Redis 에러 처리
   console.log('Redis Error ' + err);
 });
