@@ -26,12 +26,12 @@ class tcpServer {
 
       // 에러 이벤트 처리
       socket.on('error', (exception) => {
-        this.onClose(socket);
+        this.onClose(exception, socket);
       });
 
       // 클라이언트 접속 정료 이벤트 처리
       socket.on('close', () => {
-        this.onClose(socket);
+        this.onClose(null, socket);
       });
 
       // 데이터 수신 처리
@@ -69,8 +69,8 @@ class tcpServer {
     console.log('onCreate', socket.remoteAddress, socket.remotePort);
   }
 
-  onClose (socket) {
-    console.log('onClose', socket.remoteAddress, socket.remotePort);
+  onClose (err, socket) {
+    console.log('onClose', socket.remoteAddress, socket.remotePort, (err || ''));
   }
 
   // Distributor 접속
